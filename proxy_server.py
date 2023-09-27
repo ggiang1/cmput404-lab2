@@ -21,7 +21,7 @@ def send_request(host, port, request):
         client_socket.shutdown(socket.SHUT_WR)
 
         # Assemble response, be careful here, recall that recv(bytes) blocks until it receives data!
-        data = client_socket.recv(BYTES_TO_READ)
+        data = client_socket.recv(BYTES_TO_READ) # Read incoming data
         result = b'' + data
         while len(data) > 0: # Buffer data received from socket. Reads data from the socket in chunks and accumulates the chunks in the result
             data = client_socket.recv(BYTES_TO_READ)
@@ -68,7 +68,8 @@ def start_server():
         '''
         Wait for an incoming connection, and when one arrives, accept it and create a new socket called 'conn' to interact with it.
         '''
-        conn, addr = server_socket.accept()
+        conn, addr = server_socket.accept() # socket.accept() => server enters a waiting state or blocking, 
+                                            # waits for a client to initiate a connection, then the socket.accept() accepts the connection returning the client socket
 
         # Pass 'conn' off to handle_connection to do some logic
         handle_connection(conn, addr)
