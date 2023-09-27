@@ -84,7 +84,7 @@ def start_threaded_server():
         while True:
             conn, addr = server_socket.accept()
             thread = Thread(target = handle_connection, args=(conn,addr))
-            thread.run()
+            thread.start()
 
 start_server()
 # start_threaded_server
