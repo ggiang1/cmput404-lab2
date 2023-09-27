@@ -1,7 +1,7 @@
 # Proxy Client
 import socket
 
-BYTES_TO_READ = 4096
+BYTES_TO_READ = 4096 # Read up to 4096 bytes of data
 
 def get(host, port):
     request = b"GET / HTTP/1.1\nHost: www.google.com\n\n"
